@@ -1,0 +1,36 @@
+data:
+  name: 'AP'
+  datapath: 'data/AP_spiral_heter.mat'
+
+model:
+  layers: [64, 64, 64, 64, 64]
+  modes1: [20, 20, 20, 20]
+  modes2: [20, 20, 20, 20]
+  modes3: [10, 10, 10, 10]
+  fc_dim: 128
+  act: gelu
+  pad_ratio: [0., 0.]
+
+train:
+  batchsize: 1
+  epochs: 300
+  milestones: [100, 150, 200]
+  base_lr: 0.001
+  scheduler_gamma: 0.5
+  f_loss: 1.0
+  xy_loss: 5.0
+  save_dir: 'AP_pretrain'
+  save_name: 'AP-pino.pt'
+
+log:
+  train: 'PINO-AP-train'
+  test: 'PINO-AP-test'
+  project: 'PINO-AP-pretrain'
+  entity: skambh-pino
+  group: PINO-1000-new
+
+test:
+  batchsize: 1
+  ckpt: 'checkpoints/AP_pretrain/AP-pino.pt'
+
+
