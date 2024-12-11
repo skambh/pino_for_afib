@@ -1,7 +1,7 @@
 import yaml
 from argparse import ArgumentParser
 import torch
-from train_utils import Adam
+from train_utils.adam import Adam
 from train_utils.datasets import get_dataloaders
 from train_utils.train_2d import train_operator
 from train_utils.eval_2d import eval_ap
